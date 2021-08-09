@@ -18,6 +18,7 @@ import sqlalchemy as sql
 
 Procedure: Once the inital libraries and tools were imported, the next step was to reate a temporary SQLite database and populate the database with content from the etf.db seed file followed by creating an engine to interact with the SQLite database. The engine was used to confirm that the table names were being read correctly with the following output: ['GDOT', 'GS', 'PYPL', 'SQ'].
 The first step in the analytical process was to analyze a single stock PYPL. The extraction of this stock data was accomplished using a SQL query (using an f-string) to SELECT all of the data from the PYPL table and then Use the query to read the PYPL data into a Pandas DataFrame. The dataframe outputs were confirmed using the Head & Tail commands. As an additonal step the mean returns for PYPL was confirmed to be [0.00195722193656932]. Next a interactive visualization with hvplot to plot the daily returns for PYPL was completed as shown below:
+![image](https://user-images.githubusercontent.com/85462153/128660738-8fa73f18-fda9-4aca-9a55-b33d18a91909.png)
 
 Next the cumulative returns for PYPL was generated using the cumprod fuunction & plotted using the hvplot command. The PYPL cumulative plot showed a constant growth rate across 800 days followed by a brief slump (days 800 - 830) and then more than doubled its growth rate over the last 90 days.  A SQL SELECT statement was used to select the dates where the PYPL closing price was higher than 200.0.There were 10 days in total where the PYPL stock was greater than 200.  The top 10 daily returns for PYPL were then generated (using a SQL statement SELECT + ORDER + LIMIT) & shown below in descending order:
 time	daily_returns
@@ -39,6 +40,7 @@ index   time	"GDOT_RETURNS"	"PYPL_RETURNS"	"GS_RETURNS"	"SQ_RETURNS"
 2	2016-12-20 00:00:00.000000	0.001261	0.007351	0.016602	0.009053
 3	2016-12-21 00:00:00.000000	0.001679	0.008807	-0.006911	-0.007591
 4	2016-12-22 00:00:00.000000	0.006077	-0.010227	-0.005178	-0.023644
+![image](https://user-images.githubusercontent.com/85462153/128660798-ef740709-7da5-400d-93e0-10838a4ab61b.png)
 
 The mean returns for each stock was then computed [using the .mean() function]:
 GDOT_RETURNS"    0.001504
@@ -54,5 +56,6 @@ The cumulative returns for the portfolio was calculated using the cumprod functi
 "PYPL_RETURNS"    1.003464
 "GS_RETURNS"      1.003660
 "SQ_RETURNS"      1.006972
+![image](https://user-images.githubusercontent.com/85462153/128660784-ee03a296-efa0-441f-89e8-303ef6099327.png)
 
 Finally the Viola library to deploy notebook as a web application. The output was copied into a word file & is part of the final uploads to Github 
